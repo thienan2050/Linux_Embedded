@@ -6,7 +6,7 @@
 * @brief 	 Example about simple character driver, allow user to read and write information from device file
 * @Ref		 For more information about Register, please reference page 90, BCM2835 ARM Peripherals
 */
-
+//haha
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/device.h>

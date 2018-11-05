@@ -141,6 +141,11 @@ static ssize_t dev_write(struct file *filep, char const *buffer, size_t len, lof
 		printk(KERN_INFO "Processer %s:: Can not receive data from User!!! Error = %ld \n",__func__,error);
 	}
 	printk(KERN_INFO "Processer %s:: message '%s' is written to  buffer \n",__func__,message);
+	if((message[0]=='i') && (message[1]=='n'))
+	{
+		ui32SetDir = (unsigned int *)(ui32Reg + GPIOFSEL1);			//pointer is now pointing to 0x3F200000 + 1(unsigned int = 4) = 0x3F200004
+		(*ui32SetDir) = ((*ui32SetDir) & (~(7 << 21))); //set pin 17 is output: clear bit [23:21], then set bit 21 to 1: [23:21:=001
+	}
 	if((message[0]=='o') && (message[1]=='u') && (message[2]=='t'))
 	{
 		ui32SetDir = (unsigned int *)(ui32Reg + GPIOFSEL1);			//pointer is now pointing to 0x3F200000 + 1(unsigned int = 4) = 0x3F200004

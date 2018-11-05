@@ -5,7 +5,6 @@
 * @version   1.0
 * @brief 	 Example about simple character driver, allow user to read and write information from device file
 * @Ref		 For more information about Register, please reference page 90, BCM2835 ARM Peripherals
-* @message	 Thien  An nho Tram Anh lam!!!
 */
 
 #include <linux/init.h>

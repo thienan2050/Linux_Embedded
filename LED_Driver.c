@@ -128,7 +128,7 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
 	//printk(KERN_INFO "%s: gui chuoi %s len user-space \n",__func__,message);
 	ui32GetValue = (unsigned int *)(ui32Reg + GPIO_LVL0);
 	bit=((*ui32GetValue)>>GPIO_PIN)& 1;
-	printk(KERN_INFO "Processer %s:: The value is %d \n",__func__,bit);
+	printk(KERN_INFO "Processer %s :: The value is %d \n",__func__,bit);
 	return 0;
 }
 

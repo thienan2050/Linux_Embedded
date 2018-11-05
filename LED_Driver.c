@@ -37,7 +37,7 @@ static char *tempmess;
 static struct class* char_class;
 static struct device* char_device;
 static unsigned int *ui32Reg;
-unsigned int *ui32SetDir,*ui32SetBit,*ui32ClrBit;
+unsigned int *ui32SetDir,*ui32SetBit,*ui32ClrBit,*ui32GetValue,bit;
 
 
 static int dev_open(struct inode *, struct file *);
@@ -109,24 +109,27 @@ static int dev_open(struct inode *inodep, struct file *filep)
 }
 static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *offset)
 {
-	int error=0;
-	int maxsize;
-	maxsize=strlen(tempmess);
-	if(maxsize <= 0)
-	{
-		tempmess = message;
-		return 0;
-	}
-	maxsize = maxsize > len ? len : maxsize;
-	printk(KERN_INFO "%s, Message = %s\n",__func__,message);
-	error = copy_to_user(buffer, message, maxsize);
-	if (error != 0)
-	{
-		printk(KERN_INFO "%s: Khong the ghi du lieu vao bo nho cua user \n",__func__);
-		return -EFAULT;
-	}
-	printk(KERN_INFO "%s: gui chuoi %s len user-space \n",__func__,message);
-	return strlen(message);
+	//int error=0;
+	//int maxsize;
+	//maxsize=strlen(tempmess);
+	//if(maxsize <= 0)
+	//{
+	//	tempmess = message;
+	//	return 0;
+	//}
+	//maxsize = maxsize > len ? len : maxsize;
+	//printk(KERN_INFO "%s, Message = %s\n",__func__,message);
+	//error = copy_to_user(buffer, message, maxsize);
+	//if (error != 0)
+	//{
+	//	printk(KERN_INFO "%s: Khong the ghi du lieu vao bo nho cua user \n",__func__);
+	//	return -EFAULT;
+	//}
+	//printk(KERN_INFO "%s: gui chuoi %s len user-space \n",__func__,message);
+	ui32GetValue = (unsigned int *)(ui32Reg + GPIO_LVL0);
+	bit=((*ui32GetValue)>>GPIO_PIN)& 1;
+	printk(KERN_INFO "Processer %s:: The value is %d \n",__func__,bit);
+	return 0;
 }
 
 

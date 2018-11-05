@@ -1,4 +1,4 @@
-obj-m:=LED_Driver.o
+obj-m:=User_Driver.o
 
 all:
 		make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

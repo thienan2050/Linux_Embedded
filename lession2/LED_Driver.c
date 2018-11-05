@@ -3,10 +3,10 @@
 * @author    Bui Thien An
 * @date 2    Nov 2018
 * @version   1.0
-* @brief 	 Example about simple character driver, allow user to read and write information from device file
-* @Ref		 For more information about Register, please reference page 90, BCM2835 ARM Peripherals
+* @brief     Example about simple character driver, allow user to read and write information from device file
+* @Ref	     For more information about Register, please reference page 90, BCM2835 ARM Peripherals
 */
-//haha
+
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/device.h>

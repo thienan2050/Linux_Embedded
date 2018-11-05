@@ -15,8 +15,8 @@
 #include <linux/uaccess.h>
 #include <linux/io.h>
 
-#define DEVICE_NAME "LED_driver"
-#define CLASS_NAME  "LED_driver_character"
+#define DEVICE_NAME "LED_Driver"
+#define CLASS_NAME  "LED_Driver_character"
 
 #define GPIO_BASE 			0x3F200000	//base address of GPIO, this is a vitural space on Linux, the physical address is 0x7E000000
 #define GPIO_PIN			17			//this pin will connect to LED

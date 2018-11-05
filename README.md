@@ -1,2 +1,1 @@
-# Linux_Embedded
-Training Linux Embedded 
+# Linux Kernel Driver

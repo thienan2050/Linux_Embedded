@@ -1,0 +1,1 @@
+cmd_/home/pi/WorkPlace/Linux_Embedded/lession2/LED_Driver.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/pi/WorkPlace/Linux_Embedded/lession2/LED_Driver.ko /home/pi/WorkPlace/Linux_Embedded/lession2/LED_Driver.o /home/pi/WorkPlace/Linux_Embedded/lession2/LED_Driver.mod.o ;  true

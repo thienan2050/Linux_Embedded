@@ -4,7 +4,7 @@
 * @date 2    Nov 2018
 * @version   1.0
 * @brief     Example about simple character driver, allow user to read and write information from device file
-* @Ref	     For more information about Register, please reference page 90, BCM2835 ARM Peripherals
+* @ref	     For more information about Register, please reference page 90, BCM2835 ARM Peripherals
 */
 
 #include <linux/init.h>
@@ -110,33 +110,16 @@ static int dev_open(struct inode *inodep, struct file *filep)
 static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *offset)
 {
 	int error=0;
-	//int maxsize;
-	//maxsize=strlen(tempmess);
-	//if(maxsize <= 0)
-	//{
-	//	tempmess = message;
-	//	return 0;
-	//}
-	//maxsize = maxsize > len ? len : maxsize;
-	//printk(KERN_INFO "%s, Message = %s\n",__func__,message);
-	//error = copy_to_user(buffer, message, maxsize);
-	//if (error != 0)
-	//{
-	//	printk(KERN_INFO "%s: Khong the ghi du lieu vao bo nho cua user \n",__func__);
-	//	return -EFAULT;
-	//}
-	//printk(KERN_INFO "%s: gui chuoi %s len user-space \n",__func__,message);
 	ui32GetValue = (unsigned int *)(ui32Reg + GPIO_LVL0);
 	bit=((*ui32GetValue)>>GPIO_PIN)& 1;
 	message[0]= bit;
-	error = copy_to_user(buffer, message, maxsize);
+	error = copy_to_user(buffer, message, 1);
 	if (error != 0)
 	{
 		printk(KERN_INFO "Processer %s::: Can not write data to user-space \n",__func__);
 		return -EFAULT;
 	}
-	printk(KERN_INFO "Processer %s:: The value is %d \n",__func__,message);
-	//printk(KERN_INFO "Processer %s :: The value is %d \n",__func__,bit);
+	printk(KERN_INFO "Processer %s:: The value is %d \n",__func__,message[0]);
 	return 0;
 }
 
